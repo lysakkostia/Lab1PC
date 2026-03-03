@@ -50,6 +50,9 @@ long long max_without_parallelism(vector<vector<int>>& matrix) {
     }
 
     auto end = chrono::high_resolution_clock::now();
+
+    volatile int anti_optimization_sink = matrix[n-1][n-1];
+
     return chrono::duration_cast<chrono::microseconds>(end - start).count();
 }
 
@@ -98,6 +101,9 @@ long long max_with_parallelism(vector<vector<int>>& matrix, int num_threads)
     }
 
     auto end = chrono::high_resolution_clock::now();
+
+    volatile int anti_optimization_sink = matrix[n-1][n-1];
+
     return chrono::duration_cast<chrono::microseconds>(end - start).count();
 }
 
